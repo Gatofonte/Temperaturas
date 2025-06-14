@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Temperaturas.ingresoPage"
+             Title="ingresoPage">
+    <!-- Pagina para el ingreso de nuevas secuencias de trabajo -->
+    
+    <VerticalStackLayout BackgroundColor="AntiqueWhite" >
+        <Label Text="Ingrese un nombre (max 18 caracteres)" FontSize="Medium" 
+                HorizontalTextAlignment="Center" Margin="5,10,5,5" 
+                TextColor="Black"/>
+        <Frame CornerRadius="10" Margin="10,5,10,5" BorderColor="SandyBrown" HasShadow="True" 
+               MaximumWidthRequest="250" MaximumHeightRequest="60"  Padding="0">
+            <Entry x:Name="nombreIngresado" Margin="1" HorizontalOptions="Center" TextColor="Black"
+                    FontSize="Medium" MaxLength="2018"
+                    WidthRequest="200" />
+        </Frame>
+        
+        <Label Text="Temperatura de coccion en °C (50-350)" FontSize="Medium" 
+                HorizontalTextAlignment="Center" Margin="5,10,5,5" 
+                TextColor="Black"/>
+        <Frame CornerRadius="10" Margin="10,5,10,5" BorderColor="SandyBrown" HasShadow="True" 
+               MaximumWidthRequest="250" MaximumHeightRequest="60"  Padding="0" >
+            <Entry x:Name="temperaturaIngresado" Margin="1" HorizontalOptions="Center" TextColor="Black"
+                    FontSize="Medium" Keyboard="Numeric"
+                    WidthRequest="200"/>
+        </Frame>
+        
+        <Label Text="Tiempo de coccion en minutos (1-240)" FontSize="Medium" 
+                HorizontalTextAlignment="Center" Margin="5,10,5,5" 
+                TextColor="Black"/>
+        <Frame CornerRadius="10" Margin="10,5,10,5" BorderColor="SandyBrown" HasShadow="True" 
+               MaximumWidthRequest="250" MaximumHeightRequest="60"  Padding="0" >
+            <Entry x:Name="tiempoIngresado" Margin="1" HorizontalOptions="Center" TextColor="Black"
+                    FontSize="Medium" Keyboard="Numeric"
+                    WidthRequest="200"/>
+        </Frame>
+        
+        <Label Text="Ingrese un tiempo de preaviso en min." FontSize="Medium" 
+                HorizontalTextAlignment="Center" Margin="5,10,5,5" 
+                TextColor="Black"/>
+        <Frame CornerRadius="10" Margin="10,5,10,10" BorderColor="SandyBrown" HasShadow="True" 
+               MaximumWidthRequest="250" MaximumHeightRequest="60"  Padding="0" >
+            <Entry x:Name="preavisoIngresado" Margin="1" HorizontalOptions="Center" TextColor="Black"
+                    FontSize="Medium" Keyboard="Numeric"
+                    WidthRequest="200"/>
+        </Frame>
+
+        <Button x:Name="nuevoIngreso"  Clicked="nuevoIngreso_Clicked" Text="Ingresar secuencia" BackgroundColor="SandyBrown"
+                HorizontalOptions="Center" FontSize="Medium" TextColor="Black" Margin="10" BorderColor="Black" BorderWidth="1"/>
+
+        <Button x:Name="ayuda" Clicked="ayuda_Clicked" Text="Menu de ayuda" BackgroundColor="LightGray"
+                HorizontalOptions="Center" FontSize="Medium" TextColor="Black" Margin="10" BorderColor="Black" BorderWidth="1" />
+
+
+    </VerticalStackLayout>
+</ContentPage>

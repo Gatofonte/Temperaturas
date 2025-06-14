@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Temperaturas.MainPage">
+
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.2*"></RowDefinition>
+            <RowDefinition Height="1.2*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <!-- Sector de seleccion de secuancias de trabajo -->
+        <Grid Grid.Row="0" BackgroundColor="AntiqueWhite" >
+            <VerticalStackLayout>
+                <Label Text="Ingrese una secuencia de coccion" FontSize="Medium" 
+                       HorizontalTextAlignment="Center" Margin="5,10,5,5" 
+                       TextColor="Black"/>
+                
+                <Button x:Name="Ingresar" HorizontalOptions="Center" Margin="5" Text="Ingresar secuencia" TextColor="Black"
+                        FontSize="Medium" Clicked="Ingresar_Clicked" BackgroundColor="SandyBrown" BorderColor="Black" BorderWidth="1"/>
+
+                <Label Text="Seleccione una secuencia ya ingresada" FontSize="Medium" 
+                       HorizontalTextAlignment="Center" Margin="5"
+                       TextColor="Black"/>
+                
+
+                <ListView x:Name="SecuenciaSeleccionada" MaximumHeightRequest="150"
+                          ItemSelected="SecuenciaSeleccionada_ItemSelected" Margin="1" 
+                          MaximumWidthRequest="200" SeparatorVisibility="None">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Frame Margin="2" Padding="5"
+                                        BackgroundColor="White"
+                                        BorderColor="Brown"
+                                        CornerRadius="10"
+                                        HasShadow="True">
+                                    <Label Text="{Binding Nombre}"
+                                            FontSize="Medium"
+                                            TextColor="Black"
+                                            VerticalOptions="Center"
+                                            HorizontalOptions="Center"/>
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+
+                    
+                </ListView>
+
+
+            </VerticalStackLayout>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            
+            <!-- Sector de visualizacion -->
+            <VerticalStackLayout Grid.Column="0" BackgroundColor="SandyBrown" >
+                <Label Text="Tipo de trabajo" Margin="5,10,5,5" HorizontalOptions="Center" TextColor="Black"
+                       FontSize="Medium"/>                
+                <Frame CornerRadius="10" Margin="10,2,10,2" BorderColor="Brown" HasShadow="True" MaximumHeightRequest="60" Padding="10" >
+                    <Label x:Name="tipoTrabajo" HorizontalOptions="Center" TextColor="Black" 
+                           FontSize="Medium" MinimumHeightRequest="20" MaximumHeightRequest="30" VerticalOptions="Center"/>                    
+                </Frame>
+                
+                <Label Text="Tiempo de coccion" Margin="5" HorizontalOptions="Center" TextColor="Black"
+                       FontSize="Medium"/>
+                <Frame CornerRadius="10" Margin="10,2,10,7" BorderColor="Brown" HasShadow="True" MaximumHeightRequest="70" Padding="10">
+                    <Label x:Name="tiempoCoccion" HorizontalOptions="Center" TextColor="Black"
+                           FontSize="Medium" MinimumHeightRequest="20" VerticalOptions="Center"/>
+                </Frame>
+                <Button x:Name="comenzarSecuencia" Text="Comenzar secuencia" Margin="10" HorizontalOptions="Center" 
+                        Clicked="comenzarSecuencia_Clicked" BorderColor="Black" BorderWidth="1"
+                        BackgroundColor="AntiqueWhite" TextColor="Black" />
+
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Grid.Column="1" BackgroundColor="SandyBrown">
+                <Label Text="Temp. de coccion" Margin="5,10,5,5" HorizontalOptions="Center" TextColor="Black"
+                       FontSize="Medium"/>
+                <Editor x:Name="temperaturaCoccion" Margin="5" HorizontalOptions="Center" TextColor="Black"
+                        IsReadOnly="True" FontSize="Medium"/>
+                <Label Text="Alarma de preaviso" Margin="5" HorizontalOptions="Center" TextColor="Black"
+                       FontSize="Medium"/>
+                <Editor x:Name="alarmaPreaviso" Margin="5" HorizontalOptions="Center" TextColor="Black"
+                        IsReadOnly="True" FontSize="Medium"/>
+                <Button x:Name="eliminarSecuencia" Text="Eliminar secuencia" Margin="5" HorizontalOptions="Center"
+                        Clicked="eliminarSecuencia_Clicked" BorderColor="Black" BorderWidth="1"
+                        BackgroundColor="AntiqueWhite" TextColor="Black"/>
+
+            </VerticalStackLayout>
+        </Grid>
+
+        <!-- Sector de monitoreo -->
+        <Grid Grid.Row="2" BackgroundColor="AntiqueWhite" Padding="10" >
+            <VerticalStackLayout>                
+                <HorizontalStackLayout>
+                    <Label Text="Tiempo transcurrido" Margin="5" HorizontalOptions="Start" TextColor="Black"
+                           FontSize="Medium"/>
+                    <Label Text="Temperatura actual" Margin="5" HorizontalOptions="End" TextColor="Black"
+                           FontSize="Medium"/>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout>
+                    <Editor x:Name="verTiempoTranscurrido" Margin="50,10,30,10" HorizontalOptions="Start" TextColor="Black"
+                            IsReadOnly="True" FontSize="Medium" 
+                            BackgroundColor="AntiqueWhite" WidthRequest="80"/>
+                    <ActivityIndicator x:Name="enActividad" IsRunning="False" />
+                    <Editor x:Name="temperatuaActual" Margin="30,10,30,10" HorizontalOptions="End" TextColor="Black"
+                            IsReadOnly="False" FontSize="Medium" Keyboard="Numeric"
+                            Background="AntiqueWhite" WidthRequest="80"/>
+                </HorizontalStackLayout>
+                <Label Text="Progreso de la coccion elegida" Margin="5" HorizontalOptions="Center" TextColor="Black"
+                       FontSize="Medium"/>
+                <ProgressBar x:Name="progresoCoccion" Progress="0.01"
+                             HorizontalOptions="Fill" MaximumWidthRequest="300" ProgressColor="Brown"
+                             ScaleY="6" />
+            </VerticalStackLayout>
+
+        </Grid>
+    </Grid>
+
+</ContentPage>
