@@ -8,23 +8,6 @@
         public MainPage()
         {
             InitializeComponent();
-
-            // Cargo el archivo, si existe
-            seteosPredefinidos = ManejodeArchivos.LeerDatos<List<Predefinidos>>("secuencias.json")?? new List<Predefinidos>            
-            
-            
-            //Creo mi lista con objetos del tipo Predefinidos y hago una carga inicial
-            {
-                new Predefinidos {Nombre="Batido liviano" , TempFuncionamiento=170 , TiempoDeCoccion=25 , AlarmaPrevia=20 },
-                new Predefinidos {Nombre="Budin" , TempFuncionamiento=190 , TiempoDeCoccion=30 , AlarmaPrevia=27 },
-                new Predefinidos {Nombre="Macarons" , TempFuncionamiento=150 , TiempoDeCoccion=12 , AlarmaPrevia=10 },
-                new Predefinidos {Nombre="Masa Sablee" , TempFuncionamiento=180 , TiempoDeCoccion = 20 , AlarmaPrevia=15 },
-            };
-
-            //Asigno esta lista como fuente del ListView
-            SecuenciaSeleccionada.ItemsSource = seteosPredefinidos;         
-
-                        
         }
 
         //creo un metodo publico para poder modificar el listview que es private
@@ -53,7 +36,6 @@
             {
                 DisplayAlert("Aviso", "No hay un elemento seleccionado.", "OK");
             }
-            //SecuenciaSeleccionada.SelectedItem = null;
         }
 
         private void Ingresar_Clicked(object sender, EventArgs e)
@@ -134,7 +116,6 @@
             }
             else DisplayAlert("Aviso", "No hay item seleccionado", "Cerrar");
         }
-
 
     }
 
